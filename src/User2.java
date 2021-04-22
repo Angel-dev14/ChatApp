@@ -5,11 +5,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client2 {
+public class User2 {
 
     public static void main(String[] args) throws IOException {
 
-        new Client("localhost", 5000);
+        new Client("localhost", 5000,"User 2");
 
     }
 

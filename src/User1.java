@@ -5,12 +5,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client1 {
+public class User1 {
 
 
     public static void main(String[] args) throws IOException {
 
-        new Client("localhost", 5000);
+        new Client("localhost", 5000,"User 1");
 
     }
 }
