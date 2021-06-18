@@ -18,3 +18,10 @@ If you want to logout simply enter logout in the message box, and you may close 
 <span>
 Note:
 This application is only basic. It's purpose is for simulating an active server that can handle clients, and it's a solid base for developing more advanced chat application</p>
+
+<h2>Chat look</h2>
+<p align="center">
+  <img src="./preview/img1.png">
+  </br>
+  </br>
+</p>
