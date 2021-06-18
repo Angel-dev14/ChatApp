@@ -21,6 +21,12 @@ public class WorkerThread extends Thread {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
+        sendSessionId();
+    }
+    public void sendSessionId()
+    {
+        writer.println("Your ID for this session is " + clientID);
+        writer.flush();
     }
 
     @Override
@@ -28,10 +34,11 @@ public class WorkerThread extends Thread {
 
         while (true) {
             try {
-
                 String line = reader.readLine();
                 if(line.equals("logout")){
+                    Thread.sleep(500);
                     active = false;
+                    Server.clients.remove(this);
                     writer.println("Successfully logged out, you may close the app");
                     writer.flush();
                     client.close();
@@ -54,8 +61,10 @@ public class WorkerThread extends Thread {
                     }
                 }
 
-            } catch (IOException exception) {
+            } catch (IOException | InterruptedException exception) {
+                //Connection reset
                 exception.printStackTrace();
+                break;
             }
         }
 

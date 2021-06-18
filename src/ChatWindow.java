@@ -125,9 +125,6 @@ public class ChatWindow extends JFrame {
         JPanel leftSide = new JPanel(new BorderLayout());
 
         JPanel box = formatMessage(message,true);
-//        JLabel text = (JLabel) box.getComponent(0);
-//        text.setBackground(new Color(0xFF15C5DE, true));
-//        text.setOpaque(true);
 
         leftSide.add(box, BorderLayout.LINE_START);
 
@@ -144,9 +141,9 @@ public class ChatWindow extends JFrame {
 
         JLabel text = new JLabel("<html><p style=\"width: 130px\">" + message + "</p></html>");
         if(receiver)
-            text.setBackground(new Color(0x11ACC1));
+            text.setBackground(new Color(0x33F5CD));
         else
-            text.setBackground(new Color(0x15D4EF));
+            text.setBackground(new Color(0x20FA72));
         text.setOpaque(true);
         text.setBorder(new EmptyBorder(10,10,10,10));
         box.add(text);

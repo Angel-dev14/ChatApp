@@ -1,7 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,18 +24,13 @@ public class Client {
         }
         chatWindow = new ChatWindow(user);
         JButton button = chatWindow.getSendButton();
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new Send().start();
-            }
-        });
+        button.addActionListener(e -> new Send().start());
         new Receive().start();
     }
 
     class Send extends Thread {
 
-        private Scanner scanner = null;
+        private Scanner scanner;
         public Send() {
             scanner = new Scanner(System.in);
         }
@@ -48,10 +40,18 @@ public class Client {
             sendMessage();
         }
 
+        private boolean validateMessage(String message)
+        {
+            if((!message.contains(":") || message.split(":").length != 2) && !message.equals("logout"))
+                return false;
+            return true;
+        }
         private void sendMessage(){
 
 
             String message = chatWindow.getMessageBox().getText();
+            if(message.isEmpty() || !validateMessage(message))
+                return;
             chatWindow.getMessageBox().setText(null);
 
             writer.println(message);
